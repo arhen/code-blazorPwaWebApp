@@ -3,7 +3,7 @@ Source code of my example of Blazer Pwa Web App at https://blazorpwawebapp.netli
 
 prerequisite
 - Install
-- Install [et.core 3.0 Preview SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0
+- Install [Net.core 3.0 Preview SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 - Install Blazor template via terminal/cmd,  ``dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview7.19365.7``
 
 Installation:
