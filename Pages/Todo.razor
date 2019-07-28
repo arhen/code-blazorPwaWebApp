@@ -1,0 +1,44 @@
+@page "/todo"
+
+
+<h1>Todo (@todos.Count(todo => !todo.IsDone))</h1>
+
+<ul>
+    @foreach (var todo in todos)
+    {
+        <li>
+            <input type="checkbox" @bind="todo.IsDone" @onclick="@(() => TodoCompleted(todo))" />
+            <input @bind="@todo.Title" />
+        </li>
+    }
+</ul>
+<input placeholder="Something Todo"  @bind="newTodo"/>
+<button @onclick="AddTodo">Add todo</button>
+
+@code{
+    private IList<TodoItem> todos = new List<TodoItem>();
+    private string newTodo;
+
+    private void AddTodo(){
+        //check value yang diinput tidak null ataupun spasi kosong
+        if(!string.IsNullOrWhiteSpace(newTodo)){
+            //add title todo item baru ke todo menggunakan poco
+            todos.Add(new TodoItem{
+                Title = newTodo
+            });
+            //set var new todo kembali kosong
+            newTodo = string.Empty;
+        }
+    }
+
+    private void TodoCompleted(TodoItem todo){
+        if( todo != null){
+            todos.Remove(todo);
+        }
+    }
+
+    class TodoItem{
+        public string Title { get; set; }
+        public bool IsDone { get; set; }
+    }
+}
